@@ -59,4 +59,25 @@ export class AuthServiceService {
     }));
   }
 
+  saveBook(bookDetails:any){
+    return this.http.post(
+      `${environment.appURI}/books.json`,
+      bookDetails
+    );
+  }
+
+  getCurrentBookList(){
+    var books: any[] = [];
+
+    return this.http.get(`${environment.appURI}/books.json`).pipe(map((res:any) => {
+      for(const key in res){
+        if(res.hasOwnProperty(key)){
+          books.push({...res[key], id:key});
+        }
+      }
+
+      return books;
+    }));
+  }
+
 }

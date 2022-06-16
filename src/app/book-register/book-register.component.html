@@ -1,0 +1,76 @@
+<div class="row" style="justify-content: right;">
+    <div *ngIf="isSuccess" style="width: 400px;">
+        <div class="alert alert-success" role="alert">
+            User Registration Successfully.
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top:3%;">
+    <div class="col-6" style="width: 28rem;">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="col">
+                        <h2>Add Book Details</h2>
+                    </div>
+                    <div class="col">
+                        <label for="">ISBN Number :- </label>
+                        <input type="text" class="form-control" formControlName="isbnNumber">
+                        <span class="err"
+                            *ngIf="registerForm.controls['isbnNumber'].touched && registerForm.controls['isbnNumber'].hasError('required')">Please
+                            Enter ISBN Number.</span>
+                    </div>
+                    <div class="col" style="margin-top: 20px;">
+                        <label for="">book Title :- </label>
+                        <input type="text" class="form-control" formControlName="bookTitle">
+                        <span class="err"
+                            *ngIf="registerForm.controls['bookTitle'].touched && registerForm.controls['bookTitle'].hasError('required')">Please
+                            Enter book Title.</span>
+                    </div>
+                    <div class="col" style="margin-top: 20px;">
+                        <label for="">Author Name :- </label>
+                        <input type="text" class="form-control" formControlName="authorName">
+                        <span class="err"
+                            *ngIf="registerForm.controls['authorName'].touched && registerForm.controls['authorName'].hasError('required')">Please
+                            Enter Author Name.</span>
+                    </div>
+                    <div class="col" style="margin-top: 20px;">
+                        <label for="">Publishing Year :- </label>
+                        <input type="date" class="form-control" formControlName="pubYear">
+                    </div>
+                    <div class="col" style="margin-top: 20px;">
+                        <input [disabled]="!registerForm.valid" type="submit" value="Register User Details"
+                            class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-6" style="width: 34rem;">
+        <div class="card">
+            <div class="card-body" style="width:100%;overflow:auto; max-height:27rem;">
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ISBN Number</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Publish Year</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let eachBook of bookList">
+                            <td>{{ eachBook.isbnNumber }}</td>
+                            <td>{{ eachBook.bookTitle }}</td>
+                            <td>{{ eachBook.authorName }}</td>
+                            <td>{{ eachBook.pubYear }}</td>
+                            <td>{{ eachBook.isbnNumber }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

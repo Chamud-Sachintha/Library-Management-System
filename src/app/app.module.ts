@@ -23,6 +23,7 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { BookComponent } from './book/book.component';
+import { BookRegisterComponent } from './book-register/book-register.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BookComponent } from './book/book.component';
     AdminHeaderComponent,
     UserComponent,
     HomeComponent,
-    BookComponent
+    BookComponent,
+    BookRegisterComponent
   ],
   imports: [
     BrowserModule,
