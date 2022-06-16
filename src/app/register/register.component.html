@@ -1,0 +1,63 @@
+<div *ngIf="isSuccess" style="float: right; width: 500px;">
+  <div class="alert alert-success" role="alert">
+    User Registration Successfully.
+  </div>
+</div>
+
+<div class="row" style="margin-top: 5%;">
+  <div class="col-6" style="width: 30rem;">
+    <div class="card">
+      <div class="card-body">
+        <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="col">
+            <h2>Add User Details</h2>
+          </div>
+          <div class="col">
+            <label for="">Full Name :- </label>
+            <input type="text" class="form-control" formControlName="fullName">
+            <span class="err" *ngIf="registerForm.controls['fullName'].touched && registerForm.controls['fullName'].hasError('required')">Please Enter Full Name.</span>
+          </div>
+          <div class="col" style="margin-top: 20px;">
+            <label for="">Email Address :- </label>
+            <input type="text" class="form-control" formControlName="emailAddress">
+            <span class="err" *ngIf="registerForm.controls['emailAddress'].touched && registerForm.controls['emailAddress'].hasError('required')">Please Enter Email Address.</span>
+          </div>
+          <div class="col" style="margin-top: 20px;">
+            <label for="">Password :- </label>
+            <input type="password" class="form-control" formControlName="password">
+            <span class="err" *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')">Please Enter Email Address.</span>
+          </div>
+          <div class="col" style="margin-top: 20px;">
+            <label for="">Confirm Password :- </label>
+            <input type="password" class="form-control" formControlName="confPassword">
+          </div>
+          <div class="col" style="margin-top: 20px;">
+            <input [disabled]="!registerForm.valid" type="submit" value="Register User Details" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-6" style="width: 32rem;">
+    <div class="card">
+      <div class="card-body" style="width:100%;overflow:auto; max-height:27rem;">
+        <table class="table">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Full Name</th>
+              <th scope="col">Email Address</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let eachUser of usersList">
+              <td>{{ eachUser.fullName }}</td>
+              <td>{{ eachUser.emailAddress }}</td>
+              <td>X</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

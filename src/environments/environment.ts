@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  appURI : "https://library-management-syste-4b86e-default-rtdb.firebaseio.com/"
 };
 
 /*
