@@ -24,6 +24,8 @@ import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home/home.component';
 import { BookComponent } from './book/book.component';
 import { BookRegisterComponent } from './book-register/book-register.component';
+import { AssigningComponent } from './assigning/assigning.component';
+import { AssignBookComponent } from './assign-book/assign-book.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { BookRegisterComponent } from './book-register/book-register.component';
     UserComponent,
     HomeComponent,
     BookComponent,
-    BookRegisterComponent
+    BookRegisterComponent,
+    AssigningComponent,
+    AssignBookComponent
   ],
   imports: [
     BrowserModule,

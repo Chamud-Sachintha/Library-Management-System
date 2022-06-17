@@ -1,0 +1,85 @@
+<!-- model starts here-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h2 class="modal-title">Select User By Email</h2>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-8">
+                <input type="text" placeholder="Search By ISBN or Title or Author Name" class="form-control">
+            </div>
+            <div class="col">
+                <button class="btn btn-primary" style="width: 7.5rem;">Search</button>
+            </div>
+        </div>
+        <table class="table mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let eachUser of usersList">
+                    <td>{{ eachUser.fullName }}</td>
+                    <td>{{ eachUser.emailAddress }}</td>
+                    <td><button class="btn btn-success btn-sm" (click)="openVerticallyCentered(content)">Assign</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+<!-- model ends here-->
+
+<div class="row" style="margin-top: 3%;">
+    <div class="col-6" style="width: 40rem;">
+        <div class="card" style="height: 30rem;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-9">
+                        <input type="text" placeholder="Search By ISBN or Title or Author Name" class="form-control">
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" style="width: 7.5rem;">Search</button>
+                    </div>
+                </div>
+                <table class="table mt-3">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ISBN Number</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Publish Year</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let eachBook of bookList">
+                            <td>{{ eachBook.isbnNumber }}</td>
+                            <td>{{ eachBook.bookTitle }}</td>
+                            <td>{{ eachBook.authorName }}</td>
+                            <td>{{ eachBook.pubYear }}</td>
+                            <td><button class="btn btn-success btn-sm" (click)="openVerticallyCentered(content)">Assign</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col" style="width: 32rem;">
+        <div class="alert alert-success" role="alert">
+          <span>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          </span>
+          <ul class="mt-3">
+            <li>This is a success alert—check it out!</li>
+            <li>This is a success alert—check it out!</li>
+            <li>This is a success alert—check it out!</li>
+          </ul>
+        </div>
+    </div>
+</div>

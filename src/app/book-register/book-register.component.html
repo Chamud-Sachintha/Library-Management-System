@@ -1,13 +1,13 @@
 <div class="row" style="justify-content: right;">
     <div *ngIf="isSuccess" style="width: 400px;">
         <div class="alert alert-success" role="alert">
-            User Registration Successfully.
+            Book Registration Successfully.
         </div>
     </div>
 </div>
 
 <div class="row" style="margin-top:3%;">
-    <div class="col-6" style="width: 28rem;">
+    <div class="col-6" style="width: 30rem;">
         <div class="card">
             <div class="card-body">
                 <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -47,7 +47,21 @@
             </div>
         </div>
     </div>
-    <div class="col-6" style="width: 34rem;">
+    <div class="col-6" style="width: 32rem;">
+        <div class="alert alert-success" role="alert">
+          <span>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          </span>
+          <ul class="mt-3">
+            <li>This is a success alert—check it out!</li>
+            <li>This is a success alert—check it out!</li>
+            <li>This is a success alert—check it out!</li>
+          </ul>
+        </div>
+    </div>
+</div>
+<div class="row mt-5">
+    <div class="col">
         <div class="card">
             <div class="card-body" style="width:100%;overflow:auto; max-height:27rem;">
                 <table class="table">

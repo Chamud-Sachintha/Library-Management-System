@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AssigningComponent } from './assigning/assigning.component';
 import { BookComponent } from './book/book.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path:"addbook",
     component: BookComponent
+  },
+  {
+    path: "assigning",
+    component: AssigningComponent
   }
 ];
 
