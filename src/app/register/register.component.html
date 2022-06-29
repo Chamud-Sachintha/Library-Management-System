@@ -1,3 +1,35 @@
+<!-- model starts here-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h2 class="modal-title">Update User Details</h2>
+  </div>
+  <div class="modal-body">
+      <div class="row">
+        <form action="" [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+          <div class="col-12">
+            <input type="text" placeholder="Full Name" class="form-control" formControlName="fullName" #value>
+          </div>
+          <div class="col-12 mt-3">
+            <input type="text" placeholder="Email Address" class="form-control" formControlName="emailAddress">
+          </div>
+          <div class="col-12 mt-3">
+            <input type="text" placeholder="Password" class="form-control" formControlName="password">
+          </div>
+          <div class="col-12 mt-3">
+            <input type="text" placeholder="Confirm Password" class="form-control" formControlName="confPassword">
+          </div>
+          <div class="col-12 mt-3">
+            <input type="submit" class="btn btn-primary btn-sm" value="Update User Details">
+          </div>
+        </form>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+<!-- model ends here-->
+
 <div *ngIf="isSuccess" style="float: right; width: 500px;">
   <div class="alert alert-success" role="alert">
     User Registration Successfully.
@@ -39,7 +71,7 @@
     </div>
   </div>
   <div class="col-6" style="width: 32rem;">
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-success" role="alert" style="height: 27rem;">
       <span>
         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
       </span>
@@ -51,7 +83,7 @@
     </div>
   </div>
 </div>
-<div class="row mt-5">
+<div class="row mt-3">
   <div class="col">
     <div class="card">
       <div class="card-body" style="width:100%;overflow:auto; max-height:27rem;">
@@ -67,7 +99,10 @@
             <tr *ngFor="let eachUser of usersList">
               <td>{{ eachUser.fullName }}</td>
               <td>{{ eachUser.emailAddress }}</td>
-              <td>X</td>
+              <td>
+                  <button class="btn btn-outline-success btn-sm"><i class="fa fa-pencil" aria-hidden="true" (click)="onUpdateValues(eachUser);openVerticallyCentered(content)"></i></button>
+                  <button class="btn btn-outline-danger btn-sm ms-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
+              </td>
             </tr>
           </tbody>
         </table>

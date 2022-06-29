@@ -26,6 +26,8 @@ import { BookComponent } from './book/book.component';
 import { BookRegisterComponent } from './book-register/book-register.component';
 import { AssigningComponent } from './assigning/assigning.component';
 import { AssignBookComponent } from './assign-book/assign-book.component';
+import { UserServiceService } from './services/user-service.service';
+import { BookServiceService } from './services/book-service.service';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,7 @@ import { AssignBookComponent } from './assign-book/assign-book.component';
     HttpClientModule,
     NgbModule
   ],
-  providers: [AuthServiceService],
+  providers: [AuthServiceService,UserServiceService,BookServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

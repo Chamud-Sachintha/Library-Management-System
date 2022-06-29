@@ -6,10 +6,10 @@
     <div class="modal-body">
         <div class="row">
             <div class="col-8">
-                <input type="text" placeholder="Search By ISBN or Title or Author Name" class="form-control">
+                <input type="text" #value placeholder="Search By ISBN or Title or Author Name" class="form-control">
             </div>
             <div class="col">
-                <button class="btn btn-primary" style="width: 7.5rem;">Search</button>
+                <button class="btn btn-primary" style="width: 7.5rem;" (click)="search(value.value)">Search</button>
             </div>
         </div>
         <table class="table mt-3">
@@ -24,7 +24,7 @@
                 <tr *ngFor="let eachUser of usersList">
                     <td>{{ eachUser.fullName }}</td>
                     <td>{{ eachUser.emailAddress }}</td>
-                    <td><button class="btn btn-success btn-sm" (click)="openVerticallyCentered(content)">Assign</button></td>
+                    <td><button class="btn btn-success btn-sm" (click)="setAssignBook(eachUser)">Assign</button></td>
                 </tr>
             </tbody>
         </table>
@@ -36,15 +36,22 @@
 <!-- model ends here-->
 
 <div class="row" style="margin-top: 3%;">
+    <div class="row">
+        <div *ngIf="isAssignedSuccess" style="width: 100%;">
+            <div class="alert alert-success" role="alert">
+                Book Assigning Successfully.
+            </div>
+        </div>
+    </div>
     <div class="col-6" style="width: 40rem;">
         <div class="card" style="height: 30rem;">
             <div class="card-body">
                 <div class="row">
                     <div class="col-9">
-                        <input type="text" placeholder="Search By ISBN or Title or Author Name" class="form-control">
+                        <input type="text" #bookValue placeholder="Search By ISBN or Title or Author Name" class="form-control" (change)="onSearchBook(bookValue.value)">
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary" style="width: 7.5rem;">Search</button>
+                        <button class="btn btn-primary" style="width: 7.5rem;" (click)="onSearchBook(bookValue.value)">Search</button>
                     </div>
                 </div>
                 <table class="table mt-3">
@@ -63,7 +70,7 @@
                             <td>{{ eachBook.bookTitle }}</td>
                             <td>{{ eachBook.authorName }}</td>
                             <td>{{ eachBook.pubYear }}</td>
-                            <td><button class="btn btn-success btn-sm" (click)="openVerticallyCentered(content)">Assign</button></td>
+                            <td><button class="btn btn-success btn-sm" (click)="openVerticallyCentered(eachBook,content)">Select User</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -71,7 +78,7 @@
         </div>
     </div>
     <div class="col" style="width: 32rem;">
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success" role="alert" style="height: 30rem;">
           <span>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
           </span>
@@ -80,6 +87,45 @@
             <li>This is a success alert—check it out!</li>
             <li>This is a success alert—check it out!</li>
           </ul>
+        </div>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h2>Assigned Books</h2>
+                <div class="row">
+                    <div class="col-10">
+                        <input type="text" #value placeholder="Search By ISBN or Title or Author Name" class="form-control">
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary" style="width: 100%;" (click)="search(value.value)">Search</button>
+                    </div>
+                </div>
+                <table class="table mt-3">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">ISBN Number</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Author</th>
+                            <th scope="col">Publish Year</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let eachBook of assignedBookList">
+                            <td>{{ eachBook.isbnNumber }}</td>
+                            <td>{{ eachBook.bookTitle }}</td>
+                            <td>{{ eachBook.fullName }}</td>
+                            <td>{{ eachBook.emailAddress }}</td>
+                            <td>
+                                <button class="btn btn-outline-danger btn-sm ms-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
