@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.loginUser(this.loginEmail,this.loginPassword).subscribe((result) => {
       if(result){
+        sessionStorage.setItem("userName", this.loginEmail);
         this.router.navigate(['/home']);
       }else{
         this.isFail = true;

@@ -1,3 +1,49 @@
+<!-- model starts here-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h2 class="modal-title">Update Book Details</h2>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <form class="form-group" [formGroup]="bookUpdateForm" (ngSubmit)="onUpdate()">
+                <div class="col">
+                    <label for="">ISBN Number :- </label>
+                    <input type="text" class="form-control" formControlName="isbnNumber">
+                    <span class="err"
+                        *ngIf="registerForm.controls['isbnNumber'].touched && registerForm.controls['isbnNumber'].hasError('required')">Please
+                        Enter ISBN Number.</span>
+                </div>
+                <div class="col" style="margin-top: 20px;">
+                    <label for="">book Title :- </label>
+                    <input type="text" class="form-control" formControlName="bookTitle">
+                    <span class="err"
+                        *ngIf="registerForm.controls['bookTitle'].touched && registerForm.controls['bookTitle'].hasError('required')">Please
+                        Enter book Title.</span>
+                </div>
+                <div class="col" style="margin-top: 20px;">
+                    <label for="">Author Name :- </label>
+                    <input type="text" class="form-control" formControlName="authorName">
+                    <span class="err"
+                        *ngIf="registerForm.controls['authorName'].touched && registerForm.controls['authorName'].hasError('required')">Please
+                        Enter Author Name.</span>
+                </div>
+                <div class="col" style="margin-top: 20px;">
+                    <label for="">Publishing Year :- </label>
+                    <input type="date" class="form-control" formControlName="pubYear">
+                </div>
+                <div class="col" style="margin-top: 20px;">
+                    <input [disabled]="!bookUpdateForm.valid" type="submit" value="Update Book Details"
+                        class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+  <!-- model ends here-->
+
 <div class="row" style="justify-content: right;">
     <div *ngIf="isSuccess" style="width: 400px;">
         <div class="alert alert-success" role="alert">
@@ -6,7 +52,7 @@
     </div>
 </div>
 
-<div class="row" style="margin-top:3%;">
+<div class="row" style="margin-top:0%;">
     <div class="col-6" style="width: 30rem;">
         <div class="card">
             <div class="card-body">
@@ -48,7 +94,7 @@
         </div>
     </div>
     <div class="col-6" style="width: 32rem;">
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success" role="alert" style="height: 27rem;">
           <span>
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
           </span>
@@ -60,7 +106,7 @@
         </div>
     </div>
 </div>
-<div class="row mt-5">
+<div class="row mt-3">
     <div class="col">
         <div class="card">
             <div class="card-body" style="width:100%;overflow:auto; max-height:27rem;">
@@ -80,7 +126,10 @@
                             <td>{{ eachBook.bookTitle }}</td>
                             <td>{{ eachBook.authorName }}</td>
                             <td>{{ eachBook.pubYear }}</td>
-                            <td>{{ eachBook.isbnNumber }}</td>
+                            <td>
+                                <button class="btn btn-outline-success btn-sm"><i class="fa fa-pencil" aria-hidden="true" (click)="onUpdateValues(eachBook);openVerticallyCentered(content)"></i></button>
+                                <button class="btn btn-outline-danger btn-sm ms-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

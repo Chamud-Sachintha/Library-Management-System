@@ -26,7 +26,7 @@ export class AssignBookComponent implements OnInit {
   constructor(private bookService: BookServiceService,private userService: UserServiceService, private authService: AuthServiceService, private modalService: NgbModal) { }
 
   openVerticallyCentered(selectedBook: any,content: any) {
-    this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { centered: true, size: 'lg'});
     this.selectedBookDetails = selectedBook;
   }
 
@@ -78,8 +78,8 @@ export class AssignBookComponent implements OnInit {
     });
   }
 
-  setAssignBook(selectedUserDetails: any){
-    const completeAssignDetail = { ...this.selectedBookDetails, ...selectedUserDetails }
+  setAssignBook(selectedUserDetails: any,date: any){
+    const completeAssignDetail = { ...this.selectedBookDetails, ...selectedUserDetails, date}
 
     this.bookService.assignBookForUser(completeAssignDetail).subscribe((result) => {
       this.isAssignedSuccess = true;

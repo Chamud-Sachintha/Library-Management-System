@@ -28,6 +28,7 @@ import { AssigningComponent } from './assigning/assigning.component';
 import { AssignBookComponent } from './assign-book/assign-book.component';
 import { UserServiceService } from './services/user-service.service';
 import { BookServiceService } from './services/book-service.service';
+import { MasterService } from './services/master.service';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,7 @@ import { BookServiceService } from './services/book-service.service';
     HttpClientModule,
     NgbModule
   ],
-  providers: [AuthServiceService,UserServiceService,BookServiceService],
+  providers: [AuthServiceService,UserServiceService,BookServiceService,MasterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

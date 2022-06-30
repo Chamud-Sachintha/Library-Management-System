@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AssigningComponent } from './assigning/assigning.component';
 import { BookComponent } from './book/book.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -15,27 +16,33 @@ const routes: Routes = [
   },
   {
     path:"register",
-    component:RegisterComponent
+    component:RegisterComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"dashboard",
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"home",
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"adduser",
-    component: UserComponent
+    component: UserComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:"addbook",
-    component: BookComponent
+    component: BookComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "assigning",
-    component: AssigningComponent
+    component: AssigningComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

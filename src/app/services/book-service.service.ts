@@ -27,4 +27,8 @@ export class BookServiceService {
       return assignedBooks;
     }));
   }
+
+  updateBookDetailsById(selectedBookDetail: any,selectedBookId: string){
+    return this.http.put(`${environment.appURI}/books/${selectedBookId}.json`, selectedBookDetail);
+  }
 }
