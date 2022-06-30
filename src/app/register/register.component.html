@@ -30,7 +30,7 @@
 </ng-template>
 <!-- model ends here-->
 
-<div *ngIf="isSuccess" style="float: right; width: 500px;">
+<div *ngIf="isSuccess" style="width: 100%;">
   <div class="alert alert-success" role="alert">
     User Registration Successfully.
   </div>
@@ -42,7 +42,7 @@
       <div class="card-body">
         <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="col">
-            <h2>Add User Details</h2>
+            <h2><img src="https://img.icons8.com/color/48/000000/circled-user-male-skin-type-7--v1.png"/> Add User Details</h2>
           </div>
           <div class="col">
             <label for="">Full Name :- </label>
@@ -101,7 +101,7 @@
               <td>{{ eachUser.emailAddress }}</td>
               <td>
                   <button class="btn btn-outline-success btn-sm"><i class="fa fa-pencil" aria-hidden="true" (click)="onUpdateValues(eachUser);openVerticallyCentered(content)"></i></button>
-                  <button class="btn btn-outline-danger btn-sm ms-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  <button class="btn btn-outline-danger btn-sm ms-2"><i class="fa fa-trash" aria-hidden="true" (click)="onDelete(eachUser.id)"></i></button>
               </td>
             </tr>
           </tbody>

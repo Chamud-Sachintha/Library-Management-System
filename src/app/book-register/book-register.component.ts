@@ -71,4 +71,14 @@ export class BookRegisterComponent implements OnInit {
     });
   }
 
+  onDelete(bookId: string){
+    let isConfirm = confirm("Are you Want to Sure Delete This Book :- ");
+
+    if(isConfirm){
+      this.bookService.deleteBookDetailsById(bookId).subscribe((result) => {
+        this.isSuccess = true;
+      });
+    }
+  }
+
 }

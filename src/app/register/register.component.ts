@@ -93,4 +93,14 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  onDelete(userId: string){
+    let isConfirm: boolean = confirm("Are you Sure want to Delete This User :- ");
+
+    if(isConfirm){
+      this.userService.deleteUserById(userId).subscribe((result) => {
+        this.isSuccess = true;
+      });
+    }
+  }
+
 }

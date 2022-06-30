@@ -29,6 +29,7 @@ import { AssignBookComponent } from './assign-book/assign-book.component';
 import { UserServiceService } from './services/user-service.service';
 import { BookServiceService } from './services/book-service.service';
 import { MasterService } from './services/master.service';
+import { IntroComponent } from './intro/intro.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MasterService } from './services/master.service';
     BookComponent,
     BookRegisterComponent,
     AssigningComponent,
-    AssignBookComponent
+    AssignBookComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,

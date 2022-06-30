@@ -38,4 +38,9 @@ export class UserServiceService {
   updateUserById(selectedUser: any, id: string){
     return this.http.put(`${environment.appURI}/users/${id}.json`, selectedUser);
   }
+
+  deleteUserById(userId: string){
+    return this.http.delete(`${environment.appURI}/users/${userId}.json`);
+  }
+
 }

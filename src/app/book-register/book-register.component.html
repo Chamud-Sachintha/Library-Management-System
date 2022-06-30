@@ -44,8 +44,8 @@
   </ng-template>
   <!-- model ends here-->
 
-<div class="row" style="justify-content: right;">
-    <div *ngIf="isSuccess" style="width: 400px;">
+<div class="row">
+    <div *ngIf="isSuccess" style="width: 100%;">
         <div class="alert alert-success" role="alert">
             Book Registration Successfully.
         </div>
@@ -128,7 +128,7 @@
                             <td>{{ eachBook.pubYear }}</td>
                             <td>
                                 <button class="btn btn-outline-success btn-sm"><i class="fa fa-pencil" aria-hidden="true" (click)="onUpdateValues(eachBook);openVerticallyCentered(content)"></i></button>
-                                <button class="btn btn-outline-danger btn-sm ms-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                <button class="btn btn-outline-danger btn-sm ms-2" (click)="onDelete(eachBook.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                     </tbody>

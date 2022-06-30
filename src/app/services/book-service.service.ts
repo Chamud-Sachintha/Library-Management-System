@@ -31,4 +31,8 @@ export class BookServiceService {
   updateBookDetailsById(selectedBookDetail: any,selectedBookId: string){
     return this.http.put(`${environment.appURI}/books/${selectedBookId}.json`, selectedBookDetail);
   }
+
+  deleteBookDetailsById(bookId: string){
+    return this.http.delete(`${environment.appURI}/books/${bookId}.json`);
+  }
 }
