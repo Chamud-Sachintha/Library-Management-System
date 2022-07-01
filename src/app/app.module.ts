@@ -30,6 +30,9 @@ import { UserServiceService } from './services/user-service.service';
 import { BookServiceService } from './services/book-service.service';
 import { MasterService } from './services/master.service';
 import { IntroComponent } from './intro/intro.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { ContactComponent } from './contact/contact.component';
+import { PortfolioCorouselComponent } from './portfolio-corousel/portfolio-corousel.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +48,10 @@ import { IntroComponent } from './intro/intro.component';
     BookRegisterComponent,
     AssigningComponent,
     AssignBookComponent,
-    IntroComponent
+    IntroComponent,
+    GalleryComponent,
+    ContactComponent,
+    PortfolioCorouselComponent
   ],
   imports: [
     BrowserModule,

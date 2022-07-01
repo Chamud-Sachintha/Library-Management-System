@@ -33,6 +33,7 @@
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/js/corousel.js",
               "src/assets/js/index.js",
               "src/assets/js/main.js"
             ]

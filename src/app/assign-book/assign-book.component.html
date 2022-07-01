@@ -45,6 +45,13 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div *ngIf="isReturnedSuccess" style="width: 100%;">
+            <div class="alert alert-success" role="alert">
+                Book Returned Successfully.
+            </div>
+        </div>
+    </div>
     <div class="col-6" style="width: 40rem;">
         <div class="card" style="height: 30rem;">
             <div class="card-body">
@@ -124,7 +131,7 @@
                             <td>{{ eachBook.emailAddress }}</td>
                             <td>{{ eachBook.date }}</td>
                             <td>
-                                <button class="btn btn-outline-danger btn-sm ms-2"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                <button class="btn btn-outline-danger btn-sm ms-2" (click)="onDeleteAssign(eachBook.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
                             </td>
                         </tr>
                     </tbody>

@@ -10,29 +10,25 @@ export class UserServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getSelectedUserById(userEmail:string){
-    var users: any[] = [];
+  getSelectedUserById(userValue:string){
+    var userDetail : any[] = [];
+    var selectedUser : any[] = [];
 
-    return this.http.get(`${environment.appURI}/users.json`).pipe(map((res:any) => {
-
+    return this.http.get(`${environment.appURI}/users.json`).pipe((map((res: any) => {
       for(const key in res){
         if(res.hasOwnProperty(key)){
-          users.push({...res[key], id: key});
-        }
-      }
-      
-      for(const user in users){
-        if(users[user]["emailAddress"] == userEmail){
-          users = users[user];
-
-          break;
-        }else{
-          continue;
+          userDetail.push({ ...res[key], id: key });
         }
       }
 
-      return users;
-    }));
+      for(const user in userDetail){
+        if(userDetail[user]["emailAddress"] == userValue || userDetail[user]["fullName"].includes(userValue)){
+          selectedUser.push(userDetail[user]);
+        }
+      }
+
+      return selectedUser;
+    })));
   }
 
   updateUserById(selectedUser: any, id: string){

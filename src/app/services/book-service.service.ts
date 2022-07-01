@@ -28,6 +28,27 @@ export class BookServiceService {
     }));
   }
 
+  getBookDetailsById(bookValue: string){
+    var bookDetail : any[] = [];
+    var selectedBook : any[] = [];
+
+    return this.http.get(`${environment.appURI}/books.json`).pipe((map((res: any) => {
+      for(const key in res){
+        if(res.hasOwnProperty(key)){
+          selectedBook.push({ ...res[key], id: key });
+        }
+      }
+
+      for(const book in selectedBook){
+        if(selectedBook[book]["isbnNumber"].includes(bookValue) || selectedBook[book]["bookTitle"].includes(bookValue)){
+          bookDetail.push(selectedBook[book]);
+        }
+      }
+
+      return bookDetail;
+    })));
+  }
+
   updateBookDetailsById(selectedBookDetail: any,selectedBookId: string){
     return this.http.put(`${environment.appURI}/books/${selectedBookId}.json`, selectedBookDetail);
   }

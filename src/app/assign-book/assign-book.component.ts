@@ -3,6 +3,7 @@ import { AuthServiceService } from '../services/auth-service.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserServiceService } from '../services/user-service.service';
 import { BookServiceService } from '../services/book-service.service';
+import { MasterService } from '../services/master.service';
 
 @Component({
   selector: 'app-assign-book',
@@ -16,6 +17,7 @@ export class AssignBookComponent implements OnInit {
     "isbnNumber": ''
   }
 
+  isReturnedSuccess!: boolean;
   isAssignedSuccess!: boolean;
   selectedBookDetails!: any;
   closeResult!: string;
@@ -23,7 +25,7 @@ export class AssignBookComponent implements OnInit {
   usersList!: any[];
   assignedBookList!: any[];
 
-  constructor(private bookService: BookServiceService,private userService: UserServiceService, private authService: AuthServiceService, private modalService: NgbModal) { }
+  constructor(private masterService: MasterService, private bookService: BookServiceService,private userService: UserServiceService, private authService: AuthServiceService, private modalService: NgbModal) { }
 
   openVerticallyCentered(selectedBook: any,content: any) {
     this.modalService.open(content, { centered: true, size: 'lg'});
@@ -54,28 +56,27 @@ export class AssignBookComponent implements OnInit {
   tmp!: string[];
 
   onSearchBook(bookValue: string) {
-    if (bookValue.length <= 0) {
+    if(bookValue){
+      this.bookService.getBookDetailsById(bookValue).subscribe((result) => {
+        this.bookList = result;
+      });
+    }else{
       this.authService.getCurrentBookList().subscribe((result) => {
         this.bookList = result;
       });
-    } else {
-      for (const eachBook in this.bookList) {
-        var bookTitle = this.bookList[eachBook]["bookTitle"].includes(bookValue.charAt(0).toUpperCase() + bookValue.slice(1));
-
-        if (bookTitle) {
-          this.bookList = [];
-          this.tmp = this.bookList[eachBook];
-        } else {
-          this.bookList = [];
-        }
-      }
     }
   }
 
   search(value: string) {
-    this.userService.getSelectedUserById(value).subscribe((result) => {
-      console.log(result);
-    });
+    if(value){
+      this.userService.getSelectedUserById(value).subscribe((result) => {
+        this.usersList = result;
+      });
+    }else{
+      this.authService.getCurrentUsers().subscribe((result) => {
+        this.usersList = result;
+      });
+    }
   }
 
   setAssignBook(selectedUserDetails: any,date: any){
@@ -83,7 +84,25 @@ export class AssignBookComponent implements OnInit {
 
     this.bookService.assignBookForUser(completeAssignDetail).subscribe((result) => {
       this.isAssignedSuccess = true;
+
+      this.bookService.getAllAssignedBooks().subscribe((result) => {
+        this.assignedBookList = result;
+      });
     });
+  }
+
+  onDeleteAssign(bookId: string){
+    let confirmDel = confirm("Are you Sure want to Delete This Assign From this User :- ");
+
+    if(confirmDel){
+      this.masterService.returnBook(bookId).subscribe((result) => {
+        this.isReturnedSuccess = true;
+
+        this.bookService.getAllAssignedBooks().subscribe((result) => {
+          this.assignedBookList = result;
+        });
+      });
+    }
   }
 
 }
