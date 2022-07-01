@@ -12,4 +12,10 @@ export class AdminHeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  signOutUser(){
+    if(sessionStorage.getItem("userName")){
+      sessionStorage.clear();
+    }
+  }
+
 }

@@ -33,6 +33,8 @@ import { IntroComponent } from './intro/intro.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ContactComponent } from './contact/contact.component';
 import { PortfolioCorouselComponent } from './portfolio-corousel/portfolio-corousel.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { PortfolioCorouselComponent } from './portfolio-corousel/portfolio-corou
     IntroComponent,
     GalleryComponent,
     ContactComponent,
-    PortfolioCorouselComponent
+    PortfolioCorouselComponent,
+    ContactFormComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

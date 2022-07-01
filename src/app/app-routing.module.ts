@@ -8,6 +8,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RegisterComponent } from './register/register.component';
 import { UserComponent } from './user/user.component';
 
@@ -55,6 +56,10 @@ const routes: Routes = [
     path: "contact",
     component: ContactComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "**",
+    component: PageNotFoundComponent
   }
 ];
 

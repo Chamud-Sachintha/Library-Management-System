@@ -24,10 +24,10 @@
                 <a href="#" routerLink="/gallery" routerLinkActive="active"><span class="fa fa-suitcase mr-3"></span> Gallery</a>
             </li>
             <li>
-                <a href="#"><span class="fa fa-cogs mr-3"></span> Services</a>
+                <a href="#" routerLink="/contact" routerLinkActive="active"><span class="fa fa-paper-plane mr-3"></span> Contacts</a>
             </li>
             <li>
-                <a href="#" routerLink="/contact" routerLinkActive="active"><span class="fa fa-paper-plane mr-3"></span> Contacts</a>
+                <a href="#" (click)="signOutUser()"><span class="fa fa-cogs mr-3"></span> Log out</a>
             </li>
         </ul>
 

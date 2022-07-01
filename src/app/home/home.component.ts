@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   
       this.userService.getSelectedUserById(this.userName).subscribe((result: any) => {
         this.userDetails = { ...result }
+        console.log(this.userDetails);
       });
     }
   }
